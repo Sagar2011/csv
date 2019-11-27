@@ -1,0 +1,16 @@
+#Stages
+stages:
+  - build
+cache:
+    key: build-cache
+    paths:
+      - .m2/
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  
+#Spring boot Build
+maven-build:
+  image: maven:3.6.0-jdk-11
+  stage: build
+  script:
+    - mvn compile
